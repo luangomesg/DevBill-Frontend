@@ -2,6 +2,10 @@ import styled from 'styled-components'
 
 import { theme } from '../../styles/theme'
 
+type CategoryBadgeProps = {
+  $color: string
+}
+
 export const Header = styled.header`
   display: flex;
   align-items: center;
@@ -18,10 +22,17 @@ export const Header = styled.header`
 
 export const Main = styled.main`
   display: flex;
-
   gap: 0.75rem;
   width: 100%;
   padding: 0 1.5rem 1.5rem 1.5rem;
+
+  @media (max-width: 600px) {
+    display: block;
+  }
+
+  @media (min-width: 601px) and (max-width: 800px) {
+    display: block;
+  }
 `
 
 export const Section = styled.section`
@@ -42,7 +53,6 @@ export const InputGroup = styled.div`
   display: flex;
   align-items: flex-end;
   max-width: 22.5rem;
-  width: 100%;
   gap: 0.5rem;
 `
 
@@ -51,6 +61,16 @@ export const Balance = styled.div`
   align-items: center;
   gap: 0.75rem;
   width: 100%;
+
+  @media (max-width: 600px) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media (min-width: 601px) and (max-width: 800px) {
+    display: flex;
+    flex-direction: column;
+  }
 `
 
 export const ChartContainer = styled.div`
@@ -87,6 +107,7 @@ export const Aside = styled.aside`
   padding: 1rem;
   border-radius: 0.25rem;
   background-color: ${theme.colors.dark};
+  margin-top: 0.75rem;
 
   header {
     display: flex;
@@ -105,4 +126,24 @@ export const TransactionGroup = styled.div`
   display: flex;
   flex-direction: column;
   padding: 0 0.75rem;
+`
+
+export const CategoryBadge = styled.span<CategoryBadgeProps>`
+  display: flex;
+  font-size: row;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.625rem;
+  font-weight: 400;
+  border: 1px solid ${(props) => props.$color};
+  color: ${(props) => props.$color};
+  padding: 0.25rem;
+  border-radius: 0.125rem;
+  cursor: pointer;
+
+  svg {
+    fill: ${theme.colors.error};
+    width: 0.875rem;
+    height: 0.875rem;
+  }
 `

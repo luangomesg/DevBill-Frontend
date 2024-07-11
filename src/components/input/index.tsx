@@ -1,20 +1,22 @@
 import { ComponentProps, forwardRef } from 'react'
 
-import { Container } from './styles'
+import { Container, ErrorMessage } from './styles'
 
 type InputProps = ComponentProps<'input'> & {
   label?: string
   variant?: 'black' | 'dark'
+  error?: string
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(function (
-  { label, variant = 'black', ...props },
+  { label, variant = 'black', error, ...props },
   ref,
 ) {
   return (
     <Container $variant={variant}>
       {label && <label>{label}</label>}
       <input ref={ref} {...props} />
+      {error && <ErrorMessage>{error}</ErrorMessage>}
     </Container>
   )
 })

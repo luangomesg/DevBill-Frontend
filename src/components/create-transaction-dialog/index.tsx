@@ -5,7 +5,7 @@ import { useCallback, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 import { useFetchAPI } from '../../hooks/useFetchAPI'
-import { createTransactinSchema } from '../../validators/schemas'
+import { createTransactionSchmea } from '../../validators/schemas'
 import { CreateTransactionData } from '../../validators/types'
 import { Button } from '../button'
 import { Dialog } from '../dialog'
@@ -22,7 +22,7 @@ import {
 } from './styles'
 
 export function CreateTransactionDialog() {
-  const { fetchCategories, categories, createTransaction } = useFetchAPI()
+  const { categories, fetchCategories, createTransaction } = useFetchAPI()
   const [open, setOpen] = useState(false)
   const {
     register,
@@ -37,7 +37,7 @@ export function CreateTransactionDialog() {
       date: dayjs('2024-01-01').format('DD/MM/YYYY'),
       type: 'income',
     },
-    resolver: zodResolver(createTransactinSchema),
+    resolver: zodResolver(createTransactionSchmea),
   })
 
   useEffect(() => {
@@ -54,8 +54,9 @@ export function CreateTransactionDialog() {
       await createTransaction(data)
       handleClose()
     },
-    [createTransaction, handleClose],
+    [handleClose, createTransaction],
   )
+
   return (
     <Dialog
       open={open}
@@ -64,7 +65,7 @@ export function CreateTransactionDialog() {
     >
       <Container>
         <Title
-          title="Nova transação"
+          title="Nova Transação"
           subtitle="Crie uma nova transação para seu controle financeiro"
         />
 
@@ -93,18 +94,21 @@ export function CreateTransactionDialog() {
             {errors.title && (
               <ErrorMessage>{errors.title.message}</ErrorMessage>
             )}
+
             <InputGroup>
               <label>Valor</label>
               <CurrencyInput
-                placeholder="R$0,00"
+                placeholder="R$  0,00"
                 format="currency"
                 currency="BRL"
                 {...register('amount')}
+                error={errors.amount?.message}
               />
-              {errors.amount && (
-                <ErrorMessage>{errors.amount.message}</ErrorMessage>
-              )}
             </InputGroup>
+            {errors.amount && (
+              <ErrorMessage>{errors.amount.message}</ErrorMessage>
+            )}
+
             <InputMask
               component={Input}
               mask="dd/mm/aaaa"
@@ -113,6 +117,7 @@ export function CreateTransactionDialog() {
               variant="black"
               placeholder="dd/mm/aaaa"
               {...register('date')}
+              error={errors.date?.message}
             />
             {errors.date && <ErrorMessage>{errors.date.message}</ErrorMessage>}
 
@@ -140,6 +145,7 @@ export function CreateTransactionDialog() {
               )}
             </RadioForm>
           </Content>
+
           <footer>
             <Button onClick={handleClose} variant="outline" type="button">
               Cancelar

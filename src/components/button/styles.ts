@@ -1,4 +1,4 @@
-import { styled, css } from 'styled-components'
+import styled, { css } from 'styled-components'
 
 import { theme } from '../../styles/theme'
 
@@ -12,19 +12,20 @@ export const Container = styled.button<ContainerProps>`
   justify-content: center;
   height: 2.25rem;
   border-radius: 0.25rem;
-  background-color: ${(props) =>
-    props.$variant == 'default' ? theme.colors.primary : 'transparent'};
-  color: ${(props) =>
-    props.$variant == 'default' ? theme.colors.black : theme.colors.primary};
   border: 0;
-  padding: 0 0.75rem;
-  transition: all 0.3s;
 
+  background-color: ${(props) =>
+    props.$variant === 'default' ? theme.colors.primary : 'transparent'};
+  color: ${(props) =>
+    props.$variant === 'default' ? theme.colors.black : theme.colors.primary};
   ${(props) =>
-    props.$variant == 'outline' &&
+    props.$variant === 'outline' &&
     css`
       border: 1px solid ${theme.colors.primary};
     `}
+
+  padding: 0 0.75rem;
+  transition: all 100ms;
 
   &:hover {
     background-color: ${theme.colors.primaryDark};

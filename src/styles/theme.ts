@@ -10,6 +10,6 @@ export const theme = {
     light: '#E8EDEB',
     neutral: '#C1C7C6',
     dark: '#001E2B',
-    black: '#04141C',
+    black: '#04141c',
   },
 }

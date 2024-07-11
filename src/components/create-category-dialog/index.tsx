@@ -15,11 +15,7 @@ import { Container } from './styles'
 export function CreateCategoryDialog() {
   const { createCategory, fetchCategories } = useFetchAPI()
   const [open, setOpen] = useState(false)
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<CreateCategoryData>({
+  const { register, handleSubmit, formState } = useForm<CreateCategoryData>({
     defaultValues: {
       title: '',
       color: theme.colors.primary,
@@ -37,8 +33,9 @@ export function CreateCategoryDialog() {
       handleClose()
       await fetchCategories()
     },
-    [createCategory, handleClose, fetchCategories],
+    [handleClose, createCategory, fetchCategories],
   )
+
   return (
     <Dialog
       open={open}
@@ -57,10 +54,14 @@ export function CreateCategoryDialog() {
               label="Nome"
               placeholder="Nome da categoria..."
               {...register('title')}
+              error={formState.errors?.title?.message}
             />
-            {errors.title?.message}
-            <Input {...register('color')} label="Cor" type="color" />
-            {errors.color?.message}
+            <Input
+              label="Cor"
+              type="color"
+              {...register('color')}
+              error={formState.errors?.color?.message}
+            />
           </div>
           <footer>
             <Button onClick={handleClose} variant="outline" type="button">

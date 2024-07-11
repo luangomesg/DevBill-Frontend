@@ -27,7 +27,7 @@ export const Container = styled.div<ContainerProps>`
     font-size: 1rem;
     width: 100%;
     border: 1px solid transparent;
-    transition: all 0.2s;
+    transition: all 100ms;
 
     &:focus {
       border-color: ${theme.colors.primary};
@@ -37,4 +37,11 @@ export const Container = styled.div<ContainerProps>`
       color: ${theme.colors.neutral};
     }
   }
+`
+
+export const ErrorMessage = styled.span`
+  margin-top: 0.125rem;
+  font-size: 0.625rem;
+  line-height: 80%;
+  color: ${theme.colors.error};
 `

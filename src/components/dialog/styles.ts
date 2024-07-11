@@ -9,21 +9,24 @@ export const Trigger = styled(Dialog.Trigger)`
   border: 0;
   background-color: transparent;
 `
+
 export const Overlay = styled(Dialog.Overlay)`
   background-color: rgba(0, 0, 0, 0.8);
   position: fixed;
   inset: 0;
-  animation: overlayShow 0.2s;
+  animation: overlayShow 150ms;
 
   @keyframes overlayShow {
     from {
       opacity: 0;
     }
+
     to {
       opacity: 1;
     }
   }
 `
+
 export const Content = styled(Dialog.Content)`
   background-color: ${theme.colors.dark};
   border-radius: 0.5rem;
@@ -34,16 +37,16 @@ export const Content = styled(Dialog.Content)`
   width: 100%;
   max-width: 25rem;
   padding: 1rem;
-  animation: contentShow 0.4s;
 
   @keyframes contentShow {
     from {
       opacity: 0;
       transform: translate(-50%, -48%) scale(0.96);
     }
+
     to {
-      opacity: 1;
-      transform: translate(-50%, -50%) scale(1);
+      opacity: 0;
+      transform: translate(-50%, -48%) scale(1);
     }
   }
 `

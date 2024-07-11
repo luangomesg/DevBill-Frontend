@@ -47,18 +47,18 @@ export const Info = styled.div`
     flex-direction: column;
     align-items: flex-start;
     gap: 0.5rem;
-  }
 
-  strong {
-    font-size: 1rem;
-    font-weight: 500;
-    color: ${theme.colors.light};
-  }
+    strong {
+      font-size: 1rem;
+      font-weight: 500;
+      color: ${theme.colors.light};
+    }
 
-  span {
-    font-size: 0.8rem;
-    font-weight: 400;
-    color: ${theme.colors.neutral};
+    span {
+      font-size: 0.875rem;
+      font-weight: 400;
+      color: ${theme.colors.neutral};
+    }
   }
 `
 

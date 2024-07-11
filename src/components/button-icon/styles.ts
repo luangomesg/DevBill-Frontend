@@ -12,10 +12,10 @@ export const Container = styled.button`
   background-color: ${theme.colors.primary};
   border: 0;
   padding: 0;
-  transition: all 0.3s;
+  transition: all 100ms;
 
   &:hover {
-    background-color: ${theme.colors.primaryDark};
+    background-color: ${theme.colors.dark};
   }
 
   svg {

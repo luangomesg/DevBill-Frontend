@@ -2,17 +2,17 @@ import styled from 'styled-components'
 
 import { theme } from '../../styles/theme'
 
-type ContainerProps = {
-  $variant: 'balance' | 'incomes' | 'expenses'
+type CardProps = {
+  $variant: 'balance' | 'revenues' | 'outgoing'
 }
 
-const variantColorMap = {
+const variantColors = {
   balance: theme.colors.info,
-  incomes: theme.colors.success,
-  expenses: theme.colors.error,
+  revenues: theme.colors.success,
+  outgoing: theme.colors.error,
 }
 
-export const Container = styled.div<ContainerProps>`
+export const Container = styled.div<CardProps>`
   display: flex;
   flex-direction: column;
   padding: 1rem;
@@ -24,7 +24,7 @@ export const Container = styled.div<ContainerProps>`
   svg {
     width: 1.75rem;
     height: 1.75rem;
-    color: ${(props) => variantColorMap[props.$variant]};
+    fill: ${(props) => variantColors[props.$variant]};
   }
 
   span {
@@ -36,6 +36,6 @@ export const Container = styled.div<ContainerProps>`
   strong {
     font-size: 1.5rem;
     font-weight: 500;
-    color: ${(props) => variantColorMap[props.$variant]};
+    color: ${(props) => variantColors[props.$variant]};
   }
 `

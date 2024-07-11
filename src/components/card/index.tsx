@@ -8,21 +8,21 @@ import { formatCurrency } from '../../utils/format-currency'
 import { Container } from './styles'
 
 type CardProps = {
-  variant?: 'balance' | 'incomes' | 'expenses'
+  variant?: 'balance' | 'revenues' | 'outgoing'
   title: string
   amount: number
 }
 
-const iconsMap = {
+const icons = {
   balance: <CurrencyCircleDollar />,
-  incomes: <ArrowCircleUpRight />,
-  expenses: <ArrowCircleDownRight />,
+  revenues: <ArrowCircleUpRight />,
+  outgoing: <ArrowCircleDownRight />,
 }
 
 export function Card({ variant = 'balance', title, amount }: CardProps) {
   return (
     <Container $variant={variant}>
-      {iconsMap[variant]}
+      {icons[variant]}
       <span>{title}</span>
       <strong>{formatCurrency(amount)}</strong>
     </Container>

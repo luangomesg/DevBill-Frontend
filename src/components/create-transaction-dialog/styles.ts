@@ -45,7 +45,7 @@ export const InputGroup = styled.div`
     background-color: ${theme.colors.black};
     color: ${theme.colors.neutral};
     border: 1px solid transparent;
-    transition: all 0.1s;
+    transform: all 100ms;
 
     &:focus {
       border-color: ${theme.colors.primary};
@@ -63,14 +63,14 @@ export const CurrencyInput = styled(InputNumberFormat)`
   font-size: 1rem;
   width: 100%;
   border: 1px solid transparent;
-  transition: all 0.1s;
-
-  &:focus {
-    border-color: ${theme.colors.primary};
-  }
+  transform: all 100ms;
 
   &::placeholder {
     color: ${theme.colors.neutral};
+  }
+
+  &:focus {
+    border-color: ${theme.colors.primary};
   }
 `
 
@@ -89,16 +89,18 @@ export const RadioGroup = styled.div`
     width: 1rem;
     height: 1rem;
     accent-color: ${theme.colors.primary};
+    cursor: pointer;
   }
 
   label {
     color: ${theme.colors.white};
     font-size: 0.875rem;
+    cursor: pointer;
   }
 `
 
 export const ErrorMessage = styled.span`
-  margin-top: 0.25rem;
+  margin-top: 0.125rem;
   font-size: 0.625rem;
   line-height: 80%;
   color: ${theme.colors.error};
