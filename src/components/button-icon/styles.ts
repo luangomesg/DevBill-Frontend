@@ -15,7 +15,7 @@ export const Container = styled.button`
   transition: all 100ms;
 
   &:hover {
-    background-color: ${theme.colors.dark};
+    background-color: ${theme.colors.primaryDark};
   }
 
   svg {
